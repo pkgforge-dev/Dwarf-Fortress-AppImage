@@ -1,0 +1,7 @@
+#!/bin/sh
+dir="$DATADIR/Bay 12 Games/Dwarf Fortress"
+mkdir -p "$dir"
+if [ ! -d "$dir"/data ]; then
+  cp -r "$APPDIR"/bin/data "$dir"
+fi
+cd "$dir"
