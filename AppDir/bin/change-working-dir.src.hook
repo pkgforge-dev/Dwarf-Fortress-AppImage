@@ -1,7 +1,24 @@
 #!/bin/sh
-dir="$DATADIR/Bay 12 Games/Dwarf Fortress"
-mkdir -p "$dir"
-if [ ! -d "$dir"/data ]; then
-  cp -r "$APPDIR"/bin/data "$dir"
+
+mkdir -p "$DATADIR"/dwarf-fortress-appimage/bin
+cd "$DATADIR"/dwarf-fortress-appimage
+
+cp "$APPDIR"/sharun    ./
+cp "$APPDIR"/.env      ./ 2>/dev/null || :
+cp "$APPDIR"/.preload  ./ 2>/dev/null || :
+
+ln -f ./sharun ./bin/dwarfort
+
+if [ ! -d ./bin/data ]; then
+	cp -r "$APPDIR"/bin/data ./bin
 fi
-cd "$dir"
+
+for d in lib share shared etc; do
+	if [ -d "$APPDIR"/"$d" ]; then
+		ln -sfn "$APPDIR"/"$d"  ./"$d"
+	fi
+done
+
+# Now jump to game
+cd ./bin
+exec ./dwarfort "$@"
