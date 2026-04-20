@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir -p "$DATADIR"/dwarfs-fortress-appimage/bin
-cd "$DATADIR"/dwarfs-fortress-appimage
+mkdir -p "$DATADIR"/dwarf-fortress-appimage/bin
+cd "$DATADIR"/dwarf-fortress-appimage
 
 cp "$APPDIR"/sharun    ./
 cp "$APPDIR"/.env      ./ 2>/dev/null || :
