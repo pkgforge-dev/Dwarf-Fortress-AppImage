@@ -7,6 +7,9 @@ cp "$APPDIR"/sharun    ./
 cp "$APPDIR"/.env      ./ 2>/dev/null || :
 cp "$APPDIR"/.preload  ./ 2>/dev/null || :
 
+# run rm -f before ln -f since ubuntu 25.10 has broken uutils ln -f
+# see: https://github.com/pkgforge-dev/xenia-canary-AppImage/issues/14
+rm -f ./bin/dwarfort
 ln -f ./sharun ./bin/dwarfort
 
 if [ ! -d ./bin/data ]; then
