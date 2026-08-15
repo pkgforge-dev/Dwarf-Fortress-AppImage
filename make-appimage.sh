@@ -3,7 +3,7 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q dwarffortress | awk '{print $2; exit}') # example command to get version of application here
+VERSION=$(pacman -Q dwarffortress | awk '{print $2; exit}')
 export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
@@ -13,8 +13,6 @@ export DEPLOY_OPENGL=1
 
 # Deploy dependencies
 quick-sharun /opt/dwarffortress
-
-# Additional changes can be done in between here
 mv -v /opt/dwarffortress/data ./AppDir/bin
 
 # Turn AppDir into AppImage
