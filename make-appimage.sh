@@ -12,7 +12,7 @@ export ICON=/usr/share/pixmaps/dwarffortress.png
 export DEPLOY_OPENGL=1
 
 # Deploy dependencies
-quick-sharun /opt/dwarffortress
+quick-sharun /opt/dwarffortress /usr/lib/libopenal.so*
 mv -v /opt/dwarffortress/data ./AppDir/bin
 
 # Turn AppDir into AppImage
